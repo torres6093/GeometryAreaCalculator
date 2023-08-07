@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GeometryAreaCalculator.Shapes
+﻿namespace GeometryAreaCalculator.Shapes
 {
     /// <summary>
     /// Class for working with a triangle shape.

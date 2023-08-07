@@ -1,6 +1,4 @@
-﻿using System.Drawing;
-
-namespace GeometryAreaCalculator.Shapes
+﻿namespace GeometryAreaCalculator.Shapes
 {
     /// <summary>
     /// Class for working with a circle shape.

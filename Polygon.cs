@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GeometryAreaCalculator
+﻿namespace GeometryAreaCalculator
 {
     /// <summary>
     /// Class for working with a any N-vertices (N > 2) polygon.

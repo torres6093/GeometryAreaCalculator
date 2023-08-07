@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace GeometryAreaCalculator
+﻿namespace GeometryAreaCalculator
 {
     /// <summary>
     /// Base abstract class for all geometric shapes.
