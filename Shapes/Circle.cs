@@ -5,7 +5,7 @@
     /// </summary>
     public class Circle : Shape
     {
-        public double Radius { get; }
+        private readonly double radius;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Circle"/> class.
@@ -18,7 +18,7 @@
                 throw new ArgumentException("Radius must be a positive number.");
             }
 
-            this.Radius = radius;
+            this.radius = radius;
         }
 
         /// <summary>
@@ -33,12 +33,18 @@
         {
             var xLength = Math.Abs(center.Item1 - endpoint.Item1);
             var yLength = Math.Abs(center.Item2 - endpoint.Item2);
-            this.Radius = Math.Sqrt(xLength * xLength + yLength * yLength);
+
+            if (xLength == 0 || yLength == 0)
+            {
+                throw new ArgumentException("The same point recieved.");
+            }
+
+            this.radius = Math.Sqrt(xLength * xLength + yLength * yLength);
         }
 
         protected override double GetArea()
         {
-            return Math.PI * Radius * Radius;
+            return Math.PI * radius * radius;
         }
     }
 }

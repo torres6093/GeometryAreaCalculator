@@ -14,6 +14,8 @@
     {
         private readonly List<(double, double)>? coordinates;
 
+        public Polygon() {  }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="Polygon"/> class.
         /// </summary>
@@ -30,29 +32,18 @@
 
         protected override double GetArea()
         {
-            try
-            {
-                double area = 0;
+            double area = 0;
 
-                for (int i = 0; i < coordinates?.Count; i++)
-                {
-                    int j = (i + 1) % coordinates.Count;
-                    var a = coordinates[i];
-                    var b = coordinates[j];
-
-                    area += a.Item1 * b.Item2 - a.Item2 * b.Item1;
-                }
-
-                return Math.Abs(area) / 2;
-            }
-            catch (OverflowException)
+            for (int i = 0; i < coordinates?.Count; i++)
             {
-                throw new OverflowException("The polygon is too big.");
+                int j = (i + 1) % coordinates.Count;
+                var a = coordinates[i];
+                var b = coordinates[j];
+
+                area += a.Item1 * b.Item2 - a.Item2 * b.Item1;
             }
-            catch (Exception ex)
-            {
-                throw new Exception("Unexpected error: ", ex);
-            }
+
+            return Math.Abs(area) / 2;
         }
     }
 }
