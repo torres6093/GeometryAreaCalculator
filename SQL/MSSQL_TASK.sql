@@ -12,9 +12,9 @@ CREATE TABLE categories (
 );
 
 INSERT INTO categories (name) VALUES
-	('Import production'),
-	('Suitable for pets'),
-	('Drinks');
+  ('Import production'),
+  ('Suitable for pets'),
+  ('Drinks');
 
 CREATE TABLE products (
   primarykey INT PRIMARY KEY IDENTITY (1, 1),
