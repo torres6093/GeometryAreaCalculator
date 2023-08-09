@@ -25,10 +25,10 @@
         public void MinDoubleRadiusTest()
         {
             // radius > 0
-            Assert.DoesNotThrow(() => new Circle(Double.Epsilon));
+            Assert.DoesNotThrow(() => new Circle(double.Epsilon));
 
             // radius is 0
-            Assert.That(() => new Circle(Double.Epsilon / 2),
+            Assert.That(() => new Circle(double.Epsilon / 2),
                 Throws.TypeOf<ArgumentException>().With.Message.EqualTo("Radius must be a positive number."));
         }
     }

@@ -1,5 +1,4 @@
 ﻿namespace GeometryAreaCalculator.Tests
-{
     using NUnit.Framework;
     using GeometryAreaCalculator.Utils;
 
