@@ -44,6 +44,11 @@
         /// <param name="points">A list of triangle vertex coordinates.</param>
         public Triangle(List<(double, double)> points) : base(points)
         {
+            if (points.Count != 3)
+            {
+                throw new ArgumentException("It's not a triangle. Use exactly 3 points.");
+            }
+
             // !NB: Будем считать, что треугольник не может быть вырожден (поэтому не станем проверять, что все 3 точки НЕ лежат на одной прямой).
         }
 
