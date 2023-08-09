@@ -1,3 +1,10 @@
+SELECT 
+	p.name as ProductName,
+	c.name as CategoryName 
+FROM products p
+LEFT JOIN categories c ON c.primarykey = p.category_pk
+
+-- Data for testing (Has been tested on https://sqliteonline.com/)
 CREATE TABLE categories (
   primarykey INT PRIMARY KEY IDENTITY (1, 1),
   name VARCHAR(100) NOT NULL
@@ -21,11 +28,3 @@ INSERT INTO products (name, category_pk) VALUES
   ('Meow-vkusno', 2),
   ('Chips Russian potato', null),
   ('Chips LAYS', 1);
-  
-SELECT 
-	p.name as ProductName,
-	c.name as CategoryName 
-FROM products p
-LEFT JOIN categories c ON c.primarykey = p.category_pk
-
--- Has been tested on https://sqliteonline.com/
