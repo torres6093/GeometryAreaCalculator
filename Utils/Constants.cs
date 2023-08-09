@@ -11,5 +11,10 @@
         /// то и цифр можно взять побольше.
         /// </remarks>
         public const int decimalPlaces = 5;
+
+        /// <summary>
+        /// Calculation accuracy.
+        /// </summary>
+        public const double delta = 1e-10;
     }
 }

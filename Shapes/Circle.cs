@@ -1,4 +1,4 @@
-﻿namespace GeometryAreaCalculator.Shapes
+﻿namespace GeometryAreaCalculator
 {
     /// <summary>
     /// Class for working with a circle shape.

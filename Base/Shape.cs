@@ -1,7 +1,7 @@
-﻿using GeometryAreaCalculator.Utils;
-
-namespace GeometryAreaCalculator
+﻿namespace GeometryAreaCalculator
 {
+    using GeometryAreaCalculator.Utils;
+
     /// <summary>
     /// Base abstract class for all geometric shapes.
     /// </summary>

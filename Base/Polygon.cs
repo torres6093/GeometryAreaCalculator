@@ -7,14 +7,14 @@
     /// !NB: Не совсем понятно, что имелось в виду под "Легкость добавления других фигур", поэтому добавил общий класс для любого многоугольника.
     /// В математику сильно не погружался, лишь вспомнил и нагуглил про формулу площади Гаусса.
     /// Поэтому, вроде как, несложно найти площадь для любого простого многоугольника, используя базовый метод данного класса.
-    /// P.S. Для Math.PI-образных фигур не стал погружаться. Хотя можно было бы сделать аналогичный общий класс для круга и элипса
+    /// P.S. Для Math.PI-образных фигур не стал погружаться. Хотя можно было бы сделать аналогичный общий класс для круга и эллипса
     /// (и при желании для более сложных волнистых фигур, вспоминая высшую математику).
     /// </remarks>
     public class Polygon : Shape
     {
-        private readonly List<(double, double)>? coordinates;
+        private List<(double, double)>? coordinates;
 
-        public Polygon() {  }
+        protected Polygon() {  }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Polygon"/> class.
@@ -24,7 +24,7 @@
         {
             if (points == null || points != null && points.Count < 3)
             {
-                throw new ArgumentException("It's not a polygon. Add at least 3 points");
+                throw new ArgumentException("It's not a polygon. Add at least 3 points.");
             }
 
             coordinates = points;

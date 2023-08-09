@@ -1,5 +1,7 @@
-﻿namespace GeometryAreaCalculator.Shapes
+﻿namespace GeometryAreaCalculator
 {
+    using GeometryAreaCalculator.Utils;
+
     /// <summary>
     /// Class for working with a triangle shape.
     /// </summary>
@@ -7,6 +9,7 @@
     {
         private List<double>? sides;
 
+        // !NB: Не было сказано, для чего необходима проверка на наличие прямого угла. Пусть используется для определения способа подсчета площади и тестов.
         private bool calcLikeRightAngle = false;
         public bool CalcLikeRightAngle => calcLikeRightAngle;
 
@@ -16,9 +19,14 @@
         /// <param name="sides">A list of triangle sides.</param>
         public Triangle(List<double> sides) : base()
         {
-            if (sides.Count != 3 || sides.Any(x => x <= 0))
+            if (sides.Count != 3)
             {
-                throw new ArgumentException("It's not a triangle. Use a collection with exactly 3 positive numbers.");
+                throw new ArgumentException("It's not a triangle. Use a collection with exactly 3 numbers.");
+            }
+
+            if (sides.Any(x => x <= 0))
+            {
+                throw new ArgumentException("It's not a triangle. Use only positive numbers.");
             }
 
             // !NB: Будем считать, что треугольник не может быть вырожден (поэтому неравенства нестрогие).
@@ -36,11 +44,6 @@
         /// <param name="points">A list of triangle vertex coordinates.</param>
         public Triangle(List<(double, double)> points) : base(points)
         {
-            if (points.Count != 3)
-            {
-                throw new ArgumentException("It's not a triangle. Use exactly 3 points.");
-            }
-
             // !NB: Будем считать, что треугольник не может быть вырожден (поэтому не станем проверять, что все 3 точки НЕ лежат на одной прямой).
         }
 
@@ -53,7 +56,7 @@
             calcLikeRightAngle = true;
 
             // !NB: О точности вычислений в задании указано не было, поэтому сравниваем с наименьшим возможным Double.
-            return Math.Abs(sides[0] * sides[0] + sides[1] * sides[1] - sides[2] * sides[2]) < Double.Epsilon;
+            return Math.Abs(sides[0] * sides[0] + sides[1] * sides[1] - sides[2] * sides[2]) < Constants.delta;
         }
 
         /// <summary>
