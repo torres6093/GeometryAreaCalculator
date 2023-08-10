@@ -1,7 +1,7 @@
 ﻿namespace GeometryAreaCalculator
 {
     /// <summary>
-    /// Class for working with a circle shape.
+    /// Class for working with a circle.
     /// </summary>
     public class Circle : Shape
     {

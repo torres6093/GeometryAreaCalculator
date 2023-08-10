@@ -7,27 +7,21 @@
     /// </summary>
     public abstract class Shape
     {
-        private readonly Lazy<double> area;
-
-        private double Area => Math.Round(area.Value, Constants.decimalPlaces);
-
-        protected Shape()
-        {
-            area = new Lazy<double>(GetArea);
-        }
-
         /// <summary>
         /// An abstract method for calculating the area of any 2D shape.
         /// </summary>
         protected abstract double GetArea();
 
+        // !NB: Под "Вычисление площади фигуры без знания типа фигуры в compile-time" я понял, что пользователь, применяющий эту библиотеку
+        // в своем проекте, не должен самостоятельно создавать экземпляр конкретного класса (new Polygon, new Triangle и тд),
+        // поэтому создал несколько фабричных методов ниже. Таким образом, во время компиляции не будет известно, площадь для фигуры какого типа будет вычисляться.
         public static double GetAreaByCoordinates(List<(double, double)> points)
         {
             // Circle
             if (points.Count == 2)
             {
                 var circle = new Circle(points[0], points[1]);
-                return circle.Area;
+                return Math.Round(circle.GetArea(), Constants.decimalPlaces);
             }
 
             // Polygon
@@ -52,19 +46,21 @@
                     break;
             }
 
-            return polygon.Area;
+            return Math.Round(polygon.GetArea(), Constants.decimalPlaces);
         }
 
         public static double GetAreaByRadius(double radius)
         {
             var circe = new Circle(radius);
-            return circe.Area;
+            return Math.Round(circe.GetArea(), Constants.decimalPlaces); ;
         }
 
+        // !NB: Не уверен, можно ли вычислять площади других фигур, имея лишь длины сторон. Предположу, что нет, поэтому оставим здесь лишь треугольник
+        // и в соответствующем классе обработаем исключение для некорректного кол-ва сторон.
         public static double GetAreaBySides(List<double> sides)
         {
             var triangle = new Triangle(sides);
-            return triangle.Area;
+            return Math.Round(triangle.GetArea(), Constants.decimalPlaces);
         }
     }
 }

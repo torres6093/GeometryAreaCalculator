@@ -7,7 +7,7 @@
     /// </summary>
     public class Triangle : Polygon
     {
-        private List<double>? sides;
+        private readonly List<double> sides;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Triangle"/> class.
@@ -48,7 +48,7 @@
         /// </summary>
         private bool HasRightAngle()
         {
-            // !NB: О точности вычислений в задании указано не было, поэтому сравниваем с наименьшим возможным Double.
+            // !NB: О точности вычислений в задании указано не было, поэтому допустим некоторую погрешность.
             return Math.Abs(sides[0] * sides[0] + sides[1] * sides[1] - sides[2] * sides[2]) < Constants.delta;
         }
 
