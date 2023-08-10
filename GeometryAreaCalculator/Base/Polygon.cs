@@ -14,13 +14,13 @@
     {
         private List<(double, double)>? coordinates;
 
-        protected Polygon() {  }
+        internal Polygon() {  }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="Polygon"/> class.
         /// </summary>
         /// <param name="points">A list of polygon vertex coordinates.</param>
-        public Polygon(List<(double, double)>? points)
+        internal Polygon(List<(double, double)>? points)
         {
             if (points == null || points != null && points.Count < 3)
             {

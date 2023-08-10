@@ -9,15 +9,11 @@
     {
         private List<double>? sides;
 
-        // !NB: Не было сказано, для чего необходима проверка на наличие прямого угла. Пусть используется для определения способа подсчета площади и тестов.
-        private bool calcLikeRightAngle = false;
-        public bool CalcLikeRightAngle => calcLikeRightAngle;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="Triangle"/> class.
         /// </summary>
         /// <param name="sides">A list of triangle sides.</param>
-        public Triangle(List<double> sides) : base()
+        internal Triangle(List<double> sides) : base()
         {
             if (sides.Count != 3)
             {
@@ -42,13 +38,8 @@
         /// Initializes a new instance of the <see cref="Triangle"/> class.
         /// </summary>
         /// <param name="points">A list of triangle vertex coordinates.</param>
-        public Triangle(List<(double, double)> points) : base(points)
+        internal Triangle(List<(double, double)> points) : base(points)
         {
-            if (points.Count != 3)
-            {
-                throw new ArgumentException("It's not a triangle. Use exactly 3 points.");
-            }
-
             // !NB: Будем считать, что треугольник не может быть вырожден (поэтому не станем проверять, что все 3 точки НЕ лежат на одной прямой).
         }
 
@@ -57,9 +48,6 @@
         /// </summary>
         private bool HasRightAngle()
         {
-            // Для теста
-            calcLikeRightAngle = true;
-
             // !NB: О точности вычислений в задании указано не было, поэтому сравниваем с наименьшим возможным Double.
             return Math.Abs(sides[0] * sides[0] + sides[1] * sides[1] - sides[2] * sides[2]) < Constants.delta;
         }
@@ -75,7 +63,7 @@
 
         protected override double GetArea()
         {
-            // !NB: Не было сказано, для чего необходима проверка на наличие прямого угла. Пусть используется для определения способа подсчета площади и тестов.
+            // !NB: Не было сказано, для чего необходима проверка на наличие прямого угла. Пусть используется для определения способа подсчета площади.
             return sides != null
                 ? HasRightAngle()
                     ? sides[0] * sides[1] / 2

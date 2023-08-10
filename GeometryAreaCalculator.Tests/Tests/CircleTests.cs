@@ -9,15 +9,14 @@
         [Test]
         public void CorrectRadiusTest()
         {
-            var circle = new Circle(4.8254);
-
-            Assert.AreEqual(circle.Area, 73.15037, Constants.delta);
+            Assert.AreEqual(
+                Shape.GetAreaByRadius(4.8254), 73.15037, Constants.delta);
         }
 
         [Test]
         public void NegativeRadiusTest()
         {
-            Assert.That(() => new Circle(-14.3815),
+            Assert.That(() => Shape.GetAreaByRadius(-14.3815),
                 Throws.TypeOf<ArgumentException>().With.Message.EqualTo("Radius must be a positive number."));
         }
 
@@ -25,10 +24,10 @@
         public void MinDoubleRadiusTest()
         {
             // radius > 0
-            Assert.DoesNotThrow(() => new Circle(double.Epsilon));
+            Assert.DoesNotThrow(() => Shape.GetAreaByRadius(double.Epsilon));
 
             // radius is 0
-            Assert.That(() => new Circle(double.Epsilon / 2),
+            Assert.That(() => Shape.GetAreaByRadius(double.Epsilon / 2),
                 Throws.TypeOf<ArgumentException>().With.Message.EqualTo("Radius must be a positive number."));
         }
     }
